@@ -1,4 +1,4 @@
-# 🚗 FleeTracker - React Native Mobile App
+# 🚗 FleeTracker
 
 A production-ready, real-time fleet management mobile application built with React Native, Expo Router, and Firebase. Designed for efficient vehicle tracking, driver management, and trip monitoring.
 
@@ -7,8 +7,6 @@ A production-ready, real-time fleet management mobile application built with Rea
 ![Firebase](https://img.shields.io/badge/Firebase-10.14-orange)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
-
-## 📱 Screenshots
 
 ![Banner](screenshots/FleeTrackerBanner.png)
 
