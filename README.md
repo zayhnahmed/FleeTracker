@@ -1,4 +1,4 @@
-# 🚗 Fleet Manager - React Native Mobile App
+# 🚗 FleeTracker
 
 A production-ready, real-time fleet management mobile application built with React Native, Expo Router, and Firebase. Designed for efficient vehicle tracking, driver management, and trip monitoring.
 
@@ -8,9 +8,7 @@ A production-ready, real-time fleet management mobile application built with Rea
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📱 Screenshots
-
-> Add screenshots of your app here
+![Banner](screenshots/FleeTrackerBanner.png)
 
 ## ✨ Features
 
@@ -55,7 +53,7 @@ A production-ready, real-time fleet management mobile application built with Rea
 
 ## 📁 Project Structure
 ```
-fleet-app/
+FleeTracker/
 ├── app/                          # Expo Router screens
 │   ├── (auth)/                   # Authentication group
 │   │   └── index.tsx             # Login screen
@@ -404,10 +402,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+Zayhan Ahmed
+- Email: ahmedzayhn@gmail.com
 
 ---
 
@@ -417,15 +413,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Backend by [Firebase](https://firebase.google.com/)
 - Icons from [Expo Vector Icons](https://icons.expo.fyi/)
 - Inspired by modern fleet management needs
-
----
-
-## 📞 Support
-
-If you have any questions or need help, please:
-- Open an issue on GitHub
-- Email: support@yourapp.com
-- Join our [Discord community](#)
 
 ---
 
