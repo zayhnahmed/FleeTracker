@@ -11,7 +11,8 @@
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
-            color: #333;
+            background-color: #2D2D2D;
+            color: #F5F5F5;
         }
         h1 {
             color: #F6D13A;
@@ -19,35 +20,77 @@
             padding-bottom: 10px;
         }
         h2 {
-            color: #2D2D2D;
+            color: #F6D13A;
             margin-top: 30px;
         }
+        h3 {
+            color: #F5F5F5;
+            margin-top: 20px;
+        }
         .contact {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 8px;
+            background: #383838;
+            padding: 20px;
+            border-radius: 12px;
             margin: 20px 0;
+            border: 1px solid #4A4A4A;
+        }
+        .contact h2 {
+            margin-top: 0;
         }
         .faq {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #383838;
+            border-radius: 8px;
+            border-left: 4px solid #F6D13A;
+        }
+        .faq h3 {
+            color: #F6D13A;
+            margin-top: 0;
         }
         code {
-            background: #f0f0f0;
+            background: #4A4A4A;
+            color: #F6D13A;
             padding: 2px 6px;
             border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #F6D13A;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        strong {
+            color: #F6D13A;
+        }
+        footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #4A4A4A;
+            color: #B8B8B8;
+            font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>FleetTracker Support</h1>
+    <h1>🚗 FleetTracker Support</h1>
     
     <div class="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Email:</strong> ahmedzayhn@gmail.com</p>
+        <h2>📧 Contact Us</h2>
+        <p><strong>Email:</strong> <a href="mailto:ahmedzayhn@gmail.com">ahmedzayhn@gmail.com</a></p>
         <p><strong>Response Time:</strong> Within 24-48 hours</p>
     </div>
 
-    <h2>Frequently Asked Questions</h2>
+    <h2>❓ Frequently Asked Questions</h2>
 
     <div class="faq">
         <h3>How do I login?</h3>
@@ -56,7 +99,7 @@
 
     <div class="faq">
         <h3>I forgot my password. How do I reset it?</h3>
-        <p>Please contact your fleet administrator or email us at ahmedzayhn@gmail.com to reset your password.</p>
+        <p>Please contact your fleet administrator or email us at <a href="mailto:ahmedzayhn@gmail.com">ahmedzayhn@gmail.com</a> to reset your password.</p>
     </div>
 
     <div class="faq">
@@ -93,7 +136,7 @@
         <p>
             1. Check your internet connection<br>
             2. Close and reopen the app<br>
-            3. If the issue persists, email us at ahmedzayhn@gmail.com
+            3. If the issue persists, email us at <a href="mailto:ahmedzayhn@gmail.com">ahmedzayhn@gmail.com</a>
         </p>
     </div>
 
@@ -107,28 +150,32 @@
         <p>Yes, FleetTracker uses Firebase for secure data storage with encryption in transit. All data is stored securely and only accessible by authorized users.</p>
     </div>
 
-    <h2>Technical Support</h2>
-    <p>For technical issues, bug reports, or feature requests, please email <strong>ahmedzayhn@gmail.com</strong> with:</p>
-    <ul>
-        <li>Your device model (iPhone/Android)</li>
-        <li>Operating system version</li>
-        <li>App version</li>
-        <li>Description of the issue</li>
-        <li>Screenshots if possible</li>
-    </ul>
+    <h2>🛠️ Technical Support</h2>
+    <div class="faq">
+        <p>For technical issues, bug reports, or feature requests, please email <strong><a href="mailto:ahmedzayhn@gmail.com">ahmedzayhn@gmail.com</a></strong> with:</p>
+        <ul>
+            <li>Your device model (iPhone/Android)</li>
+            <li>Operating system version</li>
+            <li>App version</li>
+            <li>Description of the issue</li>
+            <li>Screenshots if possible</li>
+        </ul>
+    </div>
 
-    <h2>Privacy Policy</h2>
-    <p>FleetTracker collects minimal user data necessary for app functionality:</p>
-    <ul>
-        <li><strong>Account Information:</strong> Email, name, phone number</li>
-        <li><strong>Location Data:</strong> Vehicle location (optional, for tracking)</li>
-        <li><strong>Trip Data:</strong> Trip history and assignments</li>
-    </ul>
-    <p>We use Firebase for secure data storage. Data is encrypted in transit and at rest. Users can request data deletion by emailing ahmedzayhn@gmail.com.</p>
-    <p><strong>Last updated:</strong> March 2026</p>
+    <h2 id="privacy-policy">🔒 Privacy Policy</h2>
+    <div class="faq">
+        <p>FleetTracker collects minimal user data necessary for app functionality:</p>
+        <ul>
+            <li><strong>Account Information:</strong> Email, name, phone number</li>
+            <li><strong>Location Data:</strong> Vehicle location (optional, for tracking)</li>
+            <li><strong>Trip Data:</strong> Trip history and assignments</li>
+        </ul>
+        <p>We use Firebase for secure data storage. Data is encrypted in transit and at rest. Users can request data deletion by emailing <a href="mailto:ahmedzayhn@gmail.com">ahmedzayhn@gmail.com</a>.</p>
+        <p><strong>Last updated:</strong> March 2026</p>
+    </div>
 
-    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 14px;">
-        <p>&copy; 2026 FleetTracker. All rights reserved.</p>
+    <footer>
+        <p>© 2026 FleetTracker. All rights reserved.</p>
     </footer>
 </body>
 </html>
