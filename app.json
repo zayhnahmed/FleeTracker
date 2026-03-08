@@ -3,7 +3,6 @@
     "name": "FleeTracker",
     "slug": "FleeTracker",
     "version": "1.0.0",
-    "privacy": "public",
     "orientation": "portrait",
     "icon": "./assets/images/FleeTrackerIcon.png",
     "scheme": "fleetracker",
