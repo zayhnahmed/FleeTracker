@@ -310,18 +310,6 @@ export default function MasterDashboard() {
         onReject={handleRejectRequest}
       />
 
-      {/* Quick Sign Out Button (when no pending requests) */}
-      {pendingCount === 0 && (
-        <View style={styles.signOutContainer}>
-          <TouchableOpacity
-            style={styles.signOutButton}
-            onPress={handleSignOut}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.signOutText}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
-      )}
     </SafeAreaView>
   );
 }
@@ -434,24 +422,5 @@ const styles = StyleSheet.create({
     ...textStyles.body,
     color: colors.textSecondary,
     textAlign: 'center',
-  },
-  signOutContainer: {
-    position: 'absolute',
-    bottom: spacing.lg,
-    right: spacing.lg,
-  },
-  signOutButton: {
-    backgroundColor: colors.surface,
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
-    borderRadius: radius.full,
-    ...shadows.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
-  signOutText: {
-    ...textStyles.body,
-    color: colors.textSecondary,
-    fontWeight: '600',
   },
 });
