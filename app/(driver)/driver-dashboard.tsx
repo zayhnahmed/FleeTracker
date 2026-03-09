@@ -18,14 +18,15 @@ import { Header } from '../../components/shared/Header';
 import { StatusBadge } from '../../components/shared/StatusBadge';
 import { ActionButton } from '../../components/driver/ActionButton';
 import { LoadingSpinner } from '../../components/shared/LoadingSpinner';
+import { Button } from '../../components/shared/Button';
+import { DriverRequestModal } from '../../components/driver/DriverRequestModal';
 import { subscribeToDriverVehicle } from '../../services/driver.service';
 import { startTrip, startReturn } from '../../services/vehicle.service';
-import { getCurrentUser, signOut } from '../../services/auth.service';
+import { getCurrentUser, signOut, getDriverProfile } from '../../services/auth.service';
+import { createVehicleRequest } from '../../services/assignment.service';
 import { Vehicle, VehicleState } from '../../types';
 import { ROUTES } from '../../constants/app.constants';
 import { colors, spacing, radius, textStyles, shadows } from '../../themes';
-import { DriverRequestModal } from '../../components/driver/DriverRequestModal';
-import { createVehicleRequest } from '../../services/assignment.service';
 
 export default function DriverDashboard() {
   const router = useRouter();
@@ -33,6 +34,8 @@ export default function DriverDashboard() {
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [requestModalVisible, setRequestModalVisible] = useState(false);
+  const [driverName, setDriverName] = useState('Driver');
 
   useEffect(() => {
     const user = getCurrentUser();
@@ -40,6 +43,13 @@ export default function DriverDashboard() {
       router.replace(ROUTES.LOGIN);
       return;
     }
+
+    // Fetch driver profile for name
+    getDriverProfile(user.uid).then((profile) => {
+      setDriverName(profile.name);
+    }).catch((err) => {
+      console.error('Error fetching driver profile:', err);
+    });
 
     const unsubscribe = subscribeToDriverVehicle(user.uid, (vehicleData) => {
       setVehicle(vehicleData);
@@ -91,6 +101,29 @@ export default function DriverDashboard() {
     setRefreshing(true);
   };
 
+  const handleRequestVehicle = async (
+    vehicleId: string,
+    destination: string,
+    reason: string
+  ) => {
+    const user = getCurrentUser();
+    if (!user) return;
+
+    try {
+      await createVehicleRequest(
+        vehicleId,
+        user.uid,
+        driverName,
+        destination,
+        reason
+      );
+      Alert.alert('Success', 'Vehicle request submitted successfully. The vehicle master will review your request.');
+    } catch (error) {
+      console.error('Error creating request:', error);
+      throw error;
+    }
+  };
+
   if (loading) {
     return <LoadingSpinner message="Loading dashboard..." />;
   }
@@ -99,6 +132,7 @@ export default function DriverDashboard() {
     <SafeAreaView style={styles.container}>
       <Header
         title="Driver Dashboard"
+        subtitle={`Welcome, ${driverName}`}
         rightAction={{
           label: 'Sign Out',
           onPress: handleSignOut,
@@ -118,11 +152,22 @@ export default function DriverDashboard() {
       >
         {!vehicle ? (
           <View style={styles.emptyState}>
+            <View style={styles.emptyIconContainer}>
+              <Text style={styles.emptyIcon}>🚗</Text>
+            </View>
             <Text style={styles.emptyTitle}>No Vehicle Assigned</Text>
             <Text style={styles.emptyText}>
-              You currently don't have a vehicle assigned. Please contact your vehicle
-              master for assignment.
+              You currently don't have a vehicle assigned. You can request one from the vehicle master.
             </Text>
+            
+            <View style={styles.requestButtonContainer}>
+              <Button
+                title="Request Vehicle"
+                onPress={() => setRequestModalVisible(true)}
+                variant="primary"
+                size="large"
+              />
+            </View>
           </View>
         ) : (
           <View style={styles.vehicleContainer}>
@@ -201,6 +246,15 @@ export default function DriverDashboard() {
           </View>
         )}
       </ScrollView>
+
+      {/* Driver Request Vehicle Modal */}
+      <DriverRequestModal
+        visible={requestModalVisible}
+        onClose={() => setRequestModalVisible(false)}
+        onSubmit={handleRequestVehicle}
+        driverId={getCurrentUser()?.uid || ''}
+        driverName={driverName}
+      />
     </SafeAreaView>
   );
 }
@@ -223,15 +277,35 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xxxl,
     paddingHorizontal: spacing.lg,
   },
+  emptyIconContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: spacing.lg,
+  },
+  emptyIcon: {
+    fontSize: 48,
+  },
   emptyTitle: {
     ...textStyles.h2,
     color: colors.textPrimary,
     marginBottom: spacing.md,
+    textAlign: 'center',
   },
   emptyText: {
     ...textStyles.body,
     color: colors.textSecondary,
     textAlign: 'center',
+    marginBottom: spacing.xl,
+    lineHeight: 24,
+  },
+  requestButtonContainer: {
+    marginTop: spacing.lg,
+    width: '100%',
+    paddingHorizontal: spacing.md,
   },
   vehicleContainer: {
     gap: spacing.lg,
